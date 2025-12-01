@@ -1,0 +1,26 @@
+@startuml
+skinparam rectangle {
+  BackgroundColor #EEF3F7
+  BorderColor #2D3E50
+}
+skinparam shadowing false
+left to right direction
+
+rectangle "Головна панель " as Dashboard
+rectangle "Список інцидентів " as IncList
+rectangle "Деталі інциденту " as IncDetails
+rectangle "Звіти " as Reports
+rectangle "IoT-пристрої " as IoTList
+rectangle "Реєстрація IoT-пристрою " as IoTReg
+
+Dashboard -down-> IncList : Перейти до списку інцидентів
+IncList -down-> IncDetails : Відкрити інцидент
+Dashboard -down-> Reports : Перейти до звітів
+Dashboard -down-> IoTList : Переглянути пристрої
+IoTList -down-> IoTReg : Додати новий пристрій
+IncDetails -up-> IncList : Назад до списку
+IoTReg -up-> IoTList : Назад до списку пристроїв
+Reports -up-> Dashboard : Назад на головну
+IncList -up-> Dashboard : Назад на головну
+
+@enduml
