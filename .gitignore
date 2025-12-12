@@ -1,0 +1,95 @@
+# =====================================
+# Solution root folder
+# =====================================
+FallingDetenctionService/**/bin/
+FallingDetenctionService/**/obj/
+FallingDetenctionService/**/[Bb]uild/
+FallingDetenctionService/**/[Dd]ebug/
+FallingDetenctionService/**/[Rr]elease/
+FallingDetenctionService/**/x64/
+FallingDetenctionService/**/x86/
+FallingDetenctionService/**/[Ll]og/
+FallingDetenctionService/**/*.log
+
+# =====================================
+# Visual Studio
+# =====================================
+FallingDetenctionService/.vs/
+FallingDetenctionService/**/*.user
+FallingDetenctionService/**/*.suo
+FallingDetenctionService/**/*.userosscache
+FallingDetenctionService/**/*.sln.docstates
+FallingDetenctionService/**/*.VC.db
+FallingDetenctionService/**/*.VC.VC.opendb
+
+# =====================================
+# VS Code
+# =====================================
+FallingDetenctionService/.vscode/
+!FallingDetenctionService/.vscode/extensions.json
+
+# =====================================
+# JetBrains Rider
+# =====================================
+FallingDetenctionService/.idea/
+FallingDetenctionService/**/*.sln.iml
+
+# =====================================
+# NuGet
+# =====================================
+FallingDetenctionService/**/packages/
+FallingDetenctionService/**/.nuget/
+FallingDetenctionService/**/*.nupkg
+FallingDetenctionService/**/*.snupkg
+FallingDetenctionService/**/project.lock.json
+FallingDetenctionService/**/project.assets.json
+
+# =====================================
+# ASP.NET Core config
+# =====================================
+FallingDetenctionService/**/appsettings.*.json
+!FallingDetenctionService/**/appsettings.json
+!FallingDetenctionService/**/appsettings.Development.json
+
+# =====================================
+# Entity Framework / Databases
+# =====================================
+FallingDetenctionService/**/Migrations/*.Designer.cs
+FallingDetenctionService/**/Migrations/*.csproj.user
+FallingDetenctionService/**/*.db
+FallingDetenctionService/**/*.sqlite
+
+# =====================================
+# Docker
+# =====================================
+FallingDetenctionService/**/docker-compose.override.yml
+FallingDetenctionService/**/.env
+FallingDetenctionService/**/.env.*
+
+# =====================================
+# Test results / coverage
+# =====================================
+FallingDetenctionService/**/TestResults/
+FallingDetenctionService/**/*.trx
+FallingDetenctionService/**/coverage/
+FallingDetenctionService/**/coverage.cobertura.xml
+
+# =====================================
+# Publish / artifacts
+# =====================================
+FallingDetenctionService/**/publish/
+FallingDetenctionService/**/artifacts/
+
+# =====================================
+# Frontend / static
+# =====================================
+FallingDetenctionService/**/node_modules/
+FallingDetenctionService/**/wwwroot/lib/
+
+# =====================================
+# OS files
+# =====================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini

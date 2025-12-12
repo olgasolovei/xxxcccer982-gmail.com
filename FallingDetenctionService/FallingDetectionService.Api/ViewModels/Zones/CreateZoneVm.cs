@@ -1,6 +1,11 @@
-﻿namespace FallingDetectionService.Api.ViewModels.Zones;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
-public class CreateZoneVm
+namespace FallingDetectionService.Api.ViewModels.Zones
 {
-    
+    public class CreateZoneVm
+    {
+        [Required] public string Name { get; set; } = default!;
+        [Required] public Guid SiteId { get; set; }
+    }
 }

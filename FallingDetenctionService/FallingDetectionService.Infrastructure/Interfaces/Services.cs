@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using FallingDetectionService.Domain;
 
-namespace FallingDetectionService.Domain
+namespace FallingDetectionService.Infrastructure.Interfaces
 {
     public interface IIncidentService
     {
@@ -15,11 +16,31 @@ namespace FallingDetectionService.Domain
     {
         Task<Device> CreateDeviceAsync(string sourceId, DeviceType type, Guid siteId, string metadata);
         Task<Device?> GetDeviceAsync(Guid id);
+        
+        Task<IReadOnlyList<Device>> ListBySiteAsync(Guid siteId);
+
     }
 
     public interface IReportService
     {
         Task<byte[]> GenerateSafetyReportAsync(Guid siteId, DateTime start, DateTime end, string format);
+    }
+    public interface ISiteService
+    {
+        Task<Site> CreateAsync(string name, string location);
+        Task<Site?> GetAsync(Guid id);
+        Task<bool> ExistsAsync(Guid id);
+        
+        Task<IReadOnlyList<Site>> ListAsync();
+    }
+    public interface IZoneService
+    {
+        Task<Zone> CreateAsync(string name, Guid siteId);
+        Task<Zone?> GetAsync(Guid id);
+        Task<bool> ExistsAsync(Guid id);
+        
+        Task<IReadOnlyList<Zone>> ListBySiteAsync(Guid siteId);
+
     }
     
     public class IncidentIngestPayload

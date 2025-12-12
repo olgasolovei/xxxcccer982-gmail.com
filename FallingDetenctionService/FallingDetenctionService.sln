@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# 
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingDetectionService.Api", "FallingDetectionService.Api\FallingDetectionService.Api.csproj", "{86CA91CB-7A96-4EFD-B743-B55147BCB6AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingDetectionService.Domain", "FallingDetectionService.Domain\FallingDetectionService.Domain.csproj", "{EC92FD74-4A00-4288-869E-007C9ED7317D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingDetectionService.Infrastructure", "FallingDetectionService.Infrastructure\FallingDetectionService.Infrastructure.csproj", "{F3BFEABE-E4B5-40B6-BDF1-538D169FEC97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7EE4AA3E-5B44-481B-8D39-018D6D794838}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FallingDetectionService.Tests", "tests\FallingDetectionService.Tests\FallingDetectionService.Tests.csproj", "{C6F48A1C-CB96-467E-9300-DDB25892E688}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86CA91CB-7A96-4EFD-B743-B55147BCB6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86CA91CB-7A96-4EFD-B743-B55147BCB6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86CA91CB-7A96-4EFD-B743-B55147BCB6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86CA91CB-7A96-4EFD-B743-B55147BCB6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC92FD74-4A00-4288-869E-007C9ED7317D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC92FD74-4A00-4288-869E-007C9ED7317D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC92FD74-4A00-4288-869E-007C9ED7317D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC92FD74-4A00-4288-869E-007C9ED7317D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3BFEABE-E4B5-40B6-BDF1-538D169FEC97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3BFEABE-E4B5-40B6-BDF1-538D169FEC97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3BFEABE-E4B5-40B6-BDF1-538D169FEC97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3BFEABE-E4B5-40B6-BDF1-538D169FEC97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6F48A1C-CB96-467E-9300-DDB25892E688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6F48A1C-CB96-467E-9300-DDB25892E688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6F48A1C-CB96-467E-9300-DDB25892E688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6F48A1C-CB96-467E-9300-DDB25892E688}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C6F48A1C-CB96-467E-9300-DDB25892E688} = {7EE4AA3E-5B44-481B-8D39-018D6D794838}
+	EndGlobalSection
+EndGlobal

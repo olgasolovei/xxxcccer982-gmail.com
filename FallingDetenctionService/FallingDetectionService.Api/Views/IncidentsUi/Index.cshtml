@@ -1,0 +1,110 @@
+﻿@model FallingDetectionService.Api.ViewModels.Incidents.IncidentsIndexVm
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Incidents";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h5 mb-1">Incidents</h1>
+        <div class="text-muted small">Перегляд інцидентів по об’єкту за період.</div>
+    </div>
+    <a class="btn btn-primary" href="/IncidentsUi/Create">Create Incident</a>
+</div>
+
+<div class="card border-0 shadow-sm mb-3">
+    <div class="card-body">
+        <form method="get" class="row g-3 align-items-end">
+            <div class="col-md-5">
+                <label class="form-label">Site</label>
+                <select class="form-select" name="siteId">
+                    <option value="">-- Select site --</option>
+                    @foreach (var s in Model.Sites)
+                    {
+                        <option value="@s.Id" selected="@(Model.SiteId == s.Id)">
+                            @s.Name (@s.Location)
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">Start (UTC)</label>
+                <input class="form-control" type="datetime-local" name="start"
+                       value="@Model.Start.ToString("yyyy-MM-ddTHH:mm")" />
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label">End (UTC)</label>
+                <input class="form-control" type="datetime-local" name="end"
+                       value="@Model.End.ToString("yyyy-MM-ddTHH:mm")" />
+            </div>
+
+            <div class="col-md-1 d-grid">
+                <button class="btn btn-outline-primary" type="submit">Go</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (!string.IsNullOrWhiteSpace(Model.Message))
+{
+    <div class="alert alert-info">@Model.Message</div>
+}
+
+@if (Model.SiteId.HasValue && Model.SiteId.Value != Guid.Empty)
+{
+    <div class="d-flex flex-wrap gap-2 mb-2">
+        <a class="btn btn-outline-secondary btn-sm"
+           href="/IncidentsUi/DownloadReport?siteId=@Model.SiteId&start=@Model.Start.ToString("o")&end=@Model.End.ToString("o")&format=csv">
+            Download CSV
+        </a>
+        <a class="btn btn-outline-secondary btn-sm"
+           href="/IncidentsUi/DownloadReport?siteId=@Model.SiteId&start=@Model.Start.ToString("o")&end=@Model.End.ToString("o")&format=json">
+            Download JSON
+        </a>
+    </div>
+}
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Type</th>
+                    <th>Confidence</th>
+                    <th>Status</th>
+                    <th>ZoneId</th>
+                    <th>SourceId</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var i in Model.Incidents)
+                {
+                    <tr>
+                        <td class="text-nowrap">@i.Timestamp.ToString("u")</td>
+                        <td><span class="badge text-bg-secondary">@i.Type</span></td>
+                        <td>@i.Confidence</td>
+                        <td>@i.Status</td>
+                        <td class="font-monospace small">@i.ZoneId</td>
+                        <td class="font-monospace small">@i.SourceId</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-primary" href="/IncidentsUi/Details/@i.Id">Details</a>
+                        </td>
+                    </tr>
+                }
+
+                @if (Model.Incidents.Count == 0 && Model.SiteId.HasValue)
+                {
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">No data</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

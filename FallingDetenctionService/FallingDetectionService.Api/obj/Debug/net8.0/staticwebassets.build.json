@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "aYdXCTQegjJFsP0s5jN5xNz0r4Y9YxIJZYCdnMAgSHo=",
+  "Source": "FallingDetectionService.Api",
+  "BasePath": "_content/FallingDetectionService.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

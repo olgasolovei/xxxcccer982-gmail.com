@@ -1,0 +1,51 @@
+﻿@model FallingDetectionService.Api.ViewModels.Devices.CreateDeviceVm
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Device";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="h5 mb-0">Create Device</h2>
+                    <a class="btn btn-sm btn-outline-secondary" href="/SitesUi/Index?id=@Model.SiteId">Back to Site</a>
+                </div>
+
+                <div class="alert alert-info py-2 small mb-3">
+                    <span class="fw-semibold">SiteId:</span> <span class="font-monospace">@Model.SiteId</span>
+                </div>
+
+                <form method="post" class="row g-3">
+                    <input type="hidden" asp-for="SiteId" />
+
+                    <div class="col-md-6">
+                        <label class="form-label">SourceId</label>
+                        <input asp-for="SourceId" class="form-control" placeholder="camera-001" />
+                        <div class="text-danger small"><span asp-validation-for="SourceId"></span></div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Type</label>
+                        <select asp-for="Type" class="form-select">
+                            <option>AI</option>
+                            <option>EDGE</option>
+                            <option>GATEWAY</option>
+                        </select>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Metadata</label>
+                        <input asp-for="Metadata" class="form-control" placeholder="Main camera near crane" />
+                    </div>
+
+                    <div class="col-12 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a class="btn btn-outline-secondary" href="/SitesUi/Index?id=@Model.SiteId">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

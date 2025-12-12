@@ -1,6 +1,10 @@
-﻿namespace FallingDetectionService.Api.ViewModels.Sites;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class CreateSiteVm
+namespace FallingDetectionService.Api.ViewModels.Sites
 {
-    
+    public class CreateSiteVm
+    {
+        [Required] public string Name { get; set; } = default!;
+        [Required] public string Location { get; set; } = default!;
+    }
 }

@@ -1,6 +1,13 @@
-﻿namespace FallingDetectionService.Api.Dtos.Sites;
+﻿using System.ComponentModel.DataAnnotations;
 
-public class CreateSiteRequestDto
+namespace FallingDetectionService.Api.Dtos.Sites
 {
-    
+    public class CreateSiteRequestDto
+    {
+        [Required]
+        public string Name { get; set; } = default!;
+
+        [Required]
+        public string Location { get; set; } = default!;
+    }
 }

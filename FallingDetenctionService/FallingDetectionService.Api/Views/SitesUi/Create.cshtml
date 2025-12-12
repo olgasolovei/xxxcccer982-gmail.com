@@ -1,0 +1,38 @@
+﻿@model FallingDetectionService.Api.ViewModels.Sites.CreateSiteVm
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Create Site";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <h2 class="h5 mb-0">Create Site</h2>
+                    <a class="btn btn-sm btn-outline-secondary" href="/">Back</a>
+                </div>
+
+                <form method="post" class="row g-3">
+                    <div class="col-12">
+                        <label class="form-label">Name</label>
+                        <input asp-for="Name" class="form-control" placeholder="Demo Site" />
+                        <div class="text-danger small"><span asp-validation-for="Name"></span></div>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">Location</label>
+                        <input asp-for="Location" class="form-control" placeholder="Kyiv" />
+                        <div class="text-danger small"><span asp-validation-for="Location"></span></div>
+                    </div>
+
+                    <div class="col-12 d-flex gap-2">
+                        <button type="submit" class="btn btn-primary">Create</button>
+                        <a class="btn btn-outline-secondary" href="/">Cancel</a>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

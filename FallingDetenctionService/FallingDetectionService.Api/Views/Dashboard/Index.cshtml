@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="row g-3">
+    <div class="col-12">
+        <div class="p-4 bg-white border rounded-3">
+            <h1 class="h4 mb-1">Dashboard</h1>
+            <div class="text-muted">Швидкий старт для наповнення довідників (Site/Zone/Device).</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="fw-semibold">1) Site</div>
+                <div class="text-muted small mb-3">Створіть будівельний об’єкт.</div>
+                <a class="btn btn-primary w-100" href="/SitesUi/Create">Create Site</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="fw-semibold">2) Zone</div>
+                <div class="text-muted small mb-3">Створюється всередині Site.</div>
+                <button class="btn btn-outline-secondary w-100" disabled>Open from Site page</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="fw-semibold">3) Device</div>
+                <div class="text-muted small mb-3">Джерело інцидентів (камера/edge/AI).</div>
+                <button class="btn btn-outline-secondary w-100" disabled>Open from Site page</button>
+            </div>
+        </div>
+    </div>
+</div>

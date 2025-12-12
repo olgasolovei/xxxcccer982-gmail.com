@@ -1,0 +1,88 @@
+﻿@model FallingDetectionService.Domain.Incident
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Incident Details";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h5 mb-1">Incident Details</h1>
+        <div class="text-muted small font-monospace">@Model.Id</div>
+    </div>
+    <a class="btn btn-outline-secondary" href="/IncidentsUi">Back</a>
+</div>
+
+<div class="row g-3">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="text-muted small">Timestamp</div>
+                        <div>@Model.Timestamp.ToString("u")</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-muted small">Status</div>
+                        <div>@Model.Status</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="text-muted small">Type</div>
+                        <div><span class="badge text-bg-secondary">@Model.Type</span></div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-muted small">Confidence</div>
+                        <div>@Model.Confidence</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="text-muted small">SiteId</div>
+                        <div class="font-monospace small">@Model.SiteId</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-muted small">ZoneId</div>
+                        <div class="font-monospace small">@Model.ZoneId</div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="text-muted small">SourceId</div>
+                        <div class="font-monospace">@Model.SourceId</div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="text-muted small">EvidenceRef</div>
+                        <div class="font-monospace">@Model.EvidenceRef</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <div class="fw-semibold mb-2">Alerts</div>
+
+                @if (Model.Alerts == null || Model.Alerts.Count == 0)
+                {
+                    <div class="text-muted">No alerts created.</div>
+                }
+                else
+                {
+                    <ul class="list-group list-group-flush">
+                        @foreach (var a in Model.Alerts)
+                        {
+                            <li class="list-group-item">
+                                <div class="d-flex justify-content-between">
+                                    <span class="badge text-bg-danger">@a.Level</span>
+                                    <span class="text-muted small">@a.CreatedAt.ToString("u")</span>
+                                </div>
+                                <div class="font-monospace small mt-1">@a.Id</div>
+                            </li>
+                        }
+                    </ul>
+                }
+            </div>
+        </div>
+    </div>
+</div>

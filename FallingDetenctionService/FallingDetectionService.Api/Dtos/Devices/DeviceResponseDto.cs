@@ -2,5 +2,6 @@
 
 public class DeviceResponseDto
 {
-    
+    public Guid Id { get; set; }
+    public string SourceId { get; set; } = default!;
 }

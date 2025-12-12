@@ -1,26 +1,213 @@
 @startuml
-skinparam rectangle {
-  BackgroundColor #EEF3F7
-  BorderColor #2D3E50
-}
+' Wireframe-style mockup using PlantUML SALT (no visual design, only structure)
 skinparam shadowing false
-left to right direction
+skinparam backgroundColor white
+title FallingDetectionService — UI Wireframe (Structure)
 
-rectangle "Головна панель " as Dashboard
-rectangle "Список інцидентів " as IncList
-rectangle "Деталі інциденту " as IncDetails
-rectangle "Звіти " as Reports
-rectangle "IoT-пристрої " as IoTList
-rectangle "Реєстрація IoT-пристрою " as IoTReg
+salt
+{
+  {
+    {+
+      {T FallingDetectionService}
+      {[Dashboard]} | {[Sites]} | {[Incidents]}
+    +}
 
-Dashboard -down-> IncList : Перейти до списку інцидентів
-IncList -down-> IncDetails : Відкрити інцидент
-Dashboard -down-> Reports : Перейти до звітів
-Dashboard -down-> IoTList : Переглянути пристрої
-IoTList -down-> IoTReg : Додати новий пристрій
-IncDetails -up-> IncList : Назад до списку
-IoTReg -up-> IoTList : Назад до списку пристроїв
-Reports -up-> Dashboard : Назад на головну
-IncList -up-> Dashboard : Назад на головну
+    ' ---------- SITES LIST ----------
+    {#
+      {+
+        {T Sites}
+        { [Create Site] }
+      +}
 
+      {+
+        {T Search / Filter (optional)}
+        { "Name contains" | [__________] }
+        { "Location" | [__________] }
+        { [Apply] | [Reset] }
+      +}
+
+      {#
+        {T Table: Sites}
+        {^ "Name" | "Location" | "SiteId" | "Actions" }
+        {^ "Demo Site" | "Kyiv" | "GUID..." |
+           [View] [Edit] [+Zone] [+Device] [Incidents] }
+        {^ "Site B" | "Lviv" | "GUID..." |
+           [View] [Edit] [+Zone] [+Device] [Incidents] }
+      #}
+
+      {+
+        {T Empty state}
+        {"No sites yet. Create the first site."}
+      +}
+    #}
+
+    ' ---------- SITE DETAILS ----------
+    {#
+      {+
+        {T Site Details}
+        { [Back to Sites] | [Edit Site] }
+      +}
+
+      {+
+        {T Summary}
+        { "Name:" | "Demo Site" }
+        { "Location:" | "Kyiv" }
+        { "SiteId:" | "GUID..." }
+      +}
+
+      {+
+        {T Quick Actions}
+        { [Create Zone] | [Create Device] | [Create Incident] }
+      +}
+
+      {#
+        {T Zones (optional table)}
+        {^ "Zone Name" | "ZoneId" | "Actions" }
+        {^ "Zone A" | "GUID..." | [View] }
+      #}
+
+      {#
+        {T Devices (optional table)}
+        {^ "SourceId" | "Type" | "DeviceId" | "Actions" }
+        {^ "camera-001" | "AI" | "GUID..." | [View] }
+      #}
+
+      {#
+        {T Recent Incidents (optional table)}
+        {^ "Time (UTC)" | "Type" | "Confidence" | "Status" | "Actions" }
+        {^ "2025-01-01 12:00" | "FALL" | "8.2" | "NEW" | [Details] }
+      #}
+    #}
+
+    ' ---------- CREATE / EDIT SITE ----------
+    {#
+      {+
+        {T Create / Edit Site}
+        { [Back] }
+      +}
+
+      {+
+        { "Name" | [____________________] }
+        { "Location" | [____________________] }
+      +}
+
+      {+
+        { [Save] | [Cancel] }
+      +}
+    #}
+
+    ' ---------- CREATE ZONE ----------
+    {#
+      {+
+        {T Create Zone}
+        { [Back to Site] }
+      +}
+
+      {+
+        { "SiteId" | "(read-only) GUID..." }
+        { "Zone Name" | [____________________] }
+      +}
+
+      {+
+        { [Create] | [Cancel] }
+      +}
+    #}
+
+    ' ---------- CREATE DEVICE ----------
+    {#
+      {+
+        {T Create Device}
+        { [Back to Site] }
+      +}
+
+      {+
+        { "SiteId" | "(read-only) GUID..." }
+        { "SourceId" | [____________________] }
+        { "Type" | ( ) AI  ( ) EDGE  ( ) GATEWAY }
+        { "Metadata" | [____________________] }
+      +}
+
+      {+
+        { [Create] | [Cancel] }
+      +}
+    #}
+
+    ' ---------- INCIDENTS LIST ----------
+    {#
+      {+
+        {T Incidents}
+        { [Create Incident] }
+      +}
+
+      {+
+        {T Filters}
+        { "Site" | [ v Select site ] }
+        { "Start (UTC)" | [ yyyy-mm-dd hh:mm ] }
+        { "End (UTC)" | [ yyyy-mm-dd hh:mm ] }
+        { [Apply] | [Reset] | [Download CSV] | [Download JSON] }
+      +}
+
+      {#
+        {T Table: Incidents}
+        {^ "Time (UTC)" | "Type" | "Confidence" | "Status" | "ZoneId" | "SourceId" | "Actions" }
+        {^ "2025-01-01 12:00" | "FALL" | "8.2" | "NEW" | "GUID..." | "camera-001" | [Details] }
+        {^ "2025-01-01 12:05" | "FALL_RISK" | "6.1" | "NEW" | "GUID..." | "camera-001" | [Details] }
+        {^ "2025-01-01 12:10" | "INFO" | "3.8" | "NEW" | "GUID..." | "camera-001" | [Details] }
+      #}
+    #}
+
+    ' ---------- CREATE INCIDENT ----------
+    {#
+      {+
+        {T Create Incident}
+        { [Back] }
+      +}
+
+      {+
+        { "Site" | [ v Select site ] }
+        { "Zone" | [ v Select zone ] }
+        { "Device (SourceId)" | [ v Select device ] }
+        { "Timestamp (UTC)" | [ yyyy-mm-dd hh:mm ] }
+        { "Confidence (0..10)" | [____] }
+        { "EvidenceRef" | [____________________] }
+      +}
+
+      {+
+        {T Note}
+        {"Type is computed from confidence: <5=INFO, 5..7=FALL_RISK, 7..10=FALL"}
+      +}
+
+      {+
+        { [Create] | [Cancel] }
+      +}
+    #}
+
+    ' ---------- INCIDENT DETAILS ----------
+    {#
+      {+
+        {T Incident Details}
+        { [Back to Incidents] }
+      +}
+
+      {+
+        { "IncidentId" | "GUID..." }
+        { "SiteId" | "GUID..." }
+        { "ZoneId" | "GUID..." }
+        { "SourceId" | "camera-001" }
+        { "Timestamp (UTC)" | "2025-01-01 12:00" }
+        { "Confidence" | "8.2" }
+        { "Type" | "FALL" }
+        { "Status" | "NEW" }
+        { "EvidenceRef" | "demo://evidence" }
+      +}
+
+      {#
+        {T Alerts}
+        {^ "Level" | "CreatedAt (UTC)" | "AlertId" }
+        {^ "HIGH" | "2025-01-01 12:00" | "GUID..." }
+      #}
+    #}
+
+  }
+}
 @enduml

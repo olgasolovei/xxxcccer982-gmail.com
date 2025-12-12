@@ -1,0 +1,66 @@
+﻿@model IReadOnlyList<FallingDetectionService.Domain.Site>
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Sites";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div>
+        <h1 class="h5 mb-1">Sites</h1>
+        <div class="text-muted small">Список будівельних майданчиків (Site). Для кожного Site можна створити Zone та Device.</div>
+    </div>
+    <a class="btn btn-primary" href="/SitesUi/Create">Create Site</a>
+</div>
+
+<div class="card border-0 shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0 align-middle">
+                <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th class="d-none d-md-table-cell">SiteId</th>
+                    <th class="text-end">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                @if (Model == null || Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="4" class="text-center text-muted py-4">
+                            Немає жодного Site. <a href="/SitesUi/Create">Створити перший</a>.
+                        </td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var s in Model)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@s.Name</td>
+                            <td class="text-muted">@s.Location</td>
+                            <td class="d-none d-md-table-cell font-monospace small">@s.Id</td>
+                            <td class="text-end">
+                                @*<div class="btn-group">
+                                    <a class="btn btn-sm btn-outline-primary" href="/SitesUi/Details/@s.Id">View</a>
+                                    <a class="btn btn-sm btn-outline-secondary" href="/SitesUi/Edit/@s.Id">Edit</a>
+                                </div>*@
+
+                                <div class="btn-group ms-2">
+                                    <a class="btn btn-sm btn-outline-success" href="/ZonesUi/Create?siteId=@s.Id">+ Zone</a>
+                                    <a class="btn btn-sm btn-outline-success" href="/DevicesUi/Create?siteId=@s.Id">+ Device</a>
+                                </div>
+
+                                <div class="btn-group ms-2">
+                                    <a class="btn btn-sm btn-outline-dark" href="/IncidentsUi?siteId=@s.Id">Incidents</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

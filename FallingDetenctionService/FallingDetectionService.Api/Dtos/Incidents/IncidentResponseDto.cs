@@ -2,5 +2,5 @@
 
 public class IncidentResponseDto
 {
-    
+    public Guid IncidentId { get; set; }
 }

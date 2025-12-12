@@ -1,6 +1,9 @@
-﻿namespace FallingDetectionService.Api.ControllersUi;
+﻿using Microsoft.AspNetCore.Mvc;
 
-public class DashboardController
+namespace FallingDetectionService.Api.ControllersUi
 {
-    
+    public class DashboardController : Controller
+    {
+        public IActionResult Index() => View();
+    }
 }
